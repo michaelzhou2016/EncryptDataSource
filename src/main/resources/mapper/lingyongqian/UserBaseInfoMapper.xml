@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- cl_user_base_info表:用户详细信息模块 -->
+<mapper namespace="com.kuanggui.EncryptDataSource.mapper.lingyongqian.UserBaseInfoMapper">
+    <!--返回Map-->        
+     <resultMap id="BaseResultMap" type="com.kuanggui.EncryptDataSource.domain.UserBaseInfo">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="real_name" property="realName" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="national" property="national" jdbcType="VARCHAR" />
+        <result column="id_no" property="idNo" jdbcType="VARCHAR" />
+        <result column="id_addr" property="idAddr" jdbcType="VARCHAR" />
+        <result column="living_img" property="livingImg" jdbcType="VARCHAR" />
+        <result column="ocr_img" property="ocrImg" jdbcType="VARCHAR" />
+        <result column="front_img" property="frontImg" jdbcType="VARCHAR" />
+        <result column="back_img" property="backImg" jdbcType="VARCHAR" />
+        <result column="education" property="education" jdbcType="VARCHAR" />
+        <result column="marry_state" property="marryState" jdbcType="VARCHAR" />
+        <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+        <result column="company_phone" property="companyPhone" jdbcType="VARCHAR" />
+        <result column="company_addr" property="companyAddr" jdbcType="VARCHAR" />
+        <result column="company_detail_addr" property="companyDetailAddr" jdbcType="VARCHAR" />
+        <result column="company_coordinate" property="companyCoordinate" jdbcType="VARCHAR" />
+        <result column="salary" property="salary" jdbcType="VARCHAR" />
+        <result column="working_years" property="workingYears" jdbcType="VARCHAR" />
+        <result column="working_img" property="workingImg" jdbcType="VARCHAR" />
+        <result column="live_time" property="liveTime" jdbcType="VARCHAR" />
+        <result column="live_addr" property="liveAddr" jdbcType="VARCHAR" />
+        <result column="live_detail_addr" property="liveDetailAddr" jdbcType="VARCHAR" />
+        <result column="live_coordinate" property="liveCoordinate" jdbcType="VARCHAR" />
+        <result column="phone_server_pwd" property="phoneServerPwd" jdbcType="VARCHAR" />
+        <result column="register_addr" property="registerAddr" jdbcType="VARCHAR" />
+        <result column="register_coordinate" property="registerCoordinate" jdbcType="VARCHAR" />
+        <result column="state" property="state" jdbcType="VARCHAR" />
+       	<result column="repay_assess" property="repayAssess" jdbcType="INTEGER" />
+       	<result column="last_overdue_day" property="lastOverdueDay" jdbcType="INTEGER" />
+        <result column="black_reason" property="blackReason" jdbcType="VARCHAR" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="check_code" property="checkCode" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <!--基本的sql查询字段 公共引用...-->
+    <sql id="Base_Column_List">
+        id,user_id,phone,real_name,age,sex,national,id_no,id_addr,living_img,ocr_img,front_img,back_img,education,marry_state,company_name,company_phone,company_addr,company_detail_addr,company_coordinate,salary,working_years,working_img,live_time,live_addr,live_detail_addr,live_coordinate,phone_server_pwd,register_addr,register_coordinate,state,black_reason,update_time,check_code,create_time 
+    </sql>
+    
+    <!-- 基本的sql查询条件公共引用 -->
+    <sql id="searchBy">
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test=" id !=null and id !=''">
+                id  = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="userId !=null and userId !=''">
+                and user_id = #{userId,jdbcType=INTEGER}
+            </if>
+            <if test="phone !=null and phone !=''">
+                and phone = #{phone,jdbcType=VARCHAR}
+            </if>
+            <if test="realName !=null and realName !=''">
+                and real_name = #{realName,jdbcType=VARCHAR}
+            </if>
+            <if test="age !=null and age !=''">
+                and age = #{age,jdbcType=INTEGER}
+            </if>
+            <if test="sex !=null and sex !=''">
+                and sex = #{sex,jdbcType=VARCHAR}
+            </if>
+            <if test="national !=null and national !=''">
+                and national = #{national,jdbcType=VARCHAR}
+            </if>
+            <if test="idNo !=null and idNo !=''">
+                and id_no = #{idNo,jdbcType=VARCHAR}
+            </if>
+            <if test="idAddr !=null and idAddr !=''" >
+                and id_addr = #{idAddr,jdbcType=VARCHAR}
+            </if>
+            <if test="livingImg !=null and livingImg !=''">
+                and living_img = #{livingImg,jdbcType=VARCHAR}
+            </if>
+            <if test="ocrImg !=null and ocrImg !=''">
+                and ocr_img = #{ocrImg,jdbcType=VARCHAR}
+            </if>
+            <if test="frontImg !=null and frontImg !=''">
+                and front_img = #{frontImg,jdbcType=VARCHAR}
+            </if>
+            <if test="backImg !=null and backImg !=''">
+                and back_img = #{backImg,jdbcType=VARCHAR}
+            </if>
+            <if test="education !=null and education !=''">
+                and education = #{education,jdbcType=VARCHAR}
+            </if>
+            <if test="marryState !=null and marryState !=''">
+                and marry_state = #{marryState,jdbcType=VARCHAR}
+            </if>
+            <if test="companyName !=null and companyName !=''">
+                and company_name = #{companyName,jdbcType=VARCHAR}
+            </if>
+            <if test="companyPhone !=null and companyPhone !=''">
+                and company_phone = #{companyPhone,jdbcType=VARCHAR}
+            </if>
+            <if test="companyAddr !=null and companyAddr !=''">
+                and company_addr = #{companyAddr,jdbcType=VARCHAR}
+            </if>
+            <if test="companyDetailAddr !=null and companyDetailAddr !=''">
+                and company_detail_addr = #{companyDetailAddr,jdbcType=VARCHAR}
+            </if>
+            <if test="companyCoordinate !=null and companyCoordinate !=''">
+                and company_coordinate = #{companyCoordinate,jdbcType=VARCHAR}
+            </if>
+            <if test="salary !=null and salary !=''">
+                and salary = #{salary,jdbcType=VARCHAR}
+            </if>
+            <if test="workingYears !=null and workingYears !=''">
+                and working_years = #{workingYears,jdbcType=VARCHAR}
+            </if>
+            <if test="workingImg !=null and workingImg !=''">
+                and working_img = #{workingImg,jdbcType=VARCHAR}
+            </if>
+            <if test="liveTime !=null and liveTime !=''">
+                and live_time = #{liveTime,jdbcType=VARCHAR}
+            </if>
+            <if test="liveAddr !=null and liveAddr !=''">
+                and live_addr = #{liveAddr,jdbcType=VARCHAR}
+            </if>
+            <if test="liveDetailAddr !=null and liveDetailAddr !=''">
+                and live_detail_addr = #{liveDetailAddr,jdbcType=VARCHAR}
+            </if>
+            <if test="liveCoordinate !=null and liveCoordinate !=''">
+                and live_coordinate = #{liveCoordinate,jdbcType=VARCHAR}
+            </if>
+            <if test="phoneServerPwd !=null and phoneServerPwd !=''">
+                and phone_server_pwd = #{phoneServerPwd,jdbcType=VARCHAR}
+            </if>
+            <if test="registerAddr !=null and registerAddr !=''">
+                and register_addr = #{registerAddr,jdbcType=VARCHAR}
+            </if>
+            <if test="registerCoordinate !=null and registerCoordinate !=''">
+                and register_coordinate = #{registerCoordinate,jdbcType=VARCHAR}
+            </if>
+            <if test="state !=null and state !=''">
+                and state = #{state,jdbcType=VARCHAR}
+            </if>
+            <if test="blackReason !=null and blackReason !=''">
+                and black_reason = #{blackReason,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime !=null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="checkCode !=null">
+                and check_code = #{checkCode,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime !=null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+        </trim>
+    </sql>
+    
+    
+    <insert id="save" parameterType="com.kuanggui.EncryptDataSource.domain.UserBaseInfo">
+        insert into cl_user_base_info(user_id,phone,real_name,age,sex,national,id_no,id_addr,living_img,ocr_img,front_img,back_img,education,marry_state,company_name,company_phone,company_addr,company_detail_addr,company_coordinate,salary,working_years,working_img,live_time,live_addr,live_detail_addr,live_coordinate,phone_server_pwd,register_addr,register_coordinate,state,black_reason,update_time,check_code,create_time)values(#{userId,jdbcType=INTEGER},#{phone,jdbcType=VARCHAR},#{realName,jdbcType=VARCHAR},#{age,jdbcType=INTEGER},#{sex,jdbcType=VARCHAR},#{national,jdbcType=VARCHAR},#{idNo,jdbcType=VARCHAR},#{idAddr,jdbcType=VARCHAR},#{livingImg,jdbcType=VARCHAR},#{ocrImg,jdbcType=VARCHAR},#{frontImg,jdbcType=VARCHAR},#{backImg,jdbcType=VARCHAR},#{education,jdbcType=VARCHAR},#{marryState,jdbcType=VARCHAR},#{companyName,jdbcType=VARCHAR},#{companyPhone,jdbcType=VARCHAR},#{companyAddr,jdbcType=VARCHAR},#{companyDetailAddr,jdbcType=VARCHAR},#{companyCoordinate,jdbcType=VARCHAR},#{salary,jdbcType=VARCHAR},#{workingYears,jdbcType=VARCHAR},#{workingImg,jdbcType=VARCHAR},#{liveTime,jdbcType=VARCHAR},#{liveAddr,jdbcType=VARCHAR},#{liveDetailAddr,jdbcType=VARCHAR},#{liveCoordinate,jdbcType=VARCHAR},#{phoneServerPwd,jdbcType=VARCHAR},#{registerAddr,jdbcType=VARCHAR},#{registerCoordinate,jdbcType=VARCHAR},#{state,jdbcType=VARCHAR},#{blackReason,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{checkCode,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP})
+    </insert>
+
+
+    
+     <update id="update" parameterType="com.kuanggui.EncryptDataSource.domain.UserBaseInfo">
+        update cl_user_base_info set 
+            user_id = #{userId,jdbcType=INTEGER},
+            phone = #{phone,jdbcType=VARCHAR},
+            real_name = #{realName,jdbcType=VARCHAR},
+            age = #{age,jdbcType=INTEGER},
+            sex = #{sex,jdbcType=VARCHAR},
+            national = #{national,jdbcType=VARCHAR},
+            id_no = #{idNo,jdbcType=VARCHAR},
+            id_addr = #{idAddr,jdbcType=VARCHAR},
+            living_img = #{livingImg,jdbcType=VARCHAR},
+            ocr_img = #{ocrImg,jdbcType=VARCHAR},
+            front_img = #{frontImg,jdbcType=VARCHAR},
+            back_img = #{backImg,jdbcType=VARCHAR},
+            education = #{education,jdbcType=VARCHAR},
+            marry_state = #{marryState,jdbcType=VARCHAR},
+            company_name = #{companyName,jdbcType=VARCHAR},
+            company_phone = #{companyPhone,jdbcType=VARCHAR},
+            company_addr = #{companyAddr,jdbcType=VARCHAR},
+            company_detail_addr = #{companyDetailAddr,jdbcType=VARCHAR},
+            company_coordinate = #{companyCoordinate,jdbcType=VARCHAR},
+            salary = #{salary,jdbcType=VARCHAR},
+            working_years = #{workingYears,jdbcType=VARCHAR},
+            working_img = #{workingImg,jdbcType=VARCHAR},
+            live_time = #{liveTime,jdbcType=VARCHAR},
+            live_addr = #{liveAddr,jdbcType=VARCHAR},
+            live_detail_addr = #{liveDetailAddr,jdbcType=VARCHAR},
+            live_coordinate = #{liveCoordinate,jdbcType=VARCHAR},
+            phone_server_pwd = #{phoneServerPwd,jdbcType=VARCHAR},
+            register_addr = #{registerAddr,jdbcType=VARCHAR},
+            register_coordinate = #{registerCoordinate,jdbcType=VARCHAR},
+            state = #{state,jdbcType=VARCHAR},
+            black_reason = #{blackReason,jdbcType=VARCHAR},
+            update_time = #{updateTime,jdbcType=TIMESTAMP},
+            check_code = #{checkCode,jdbcType=VARCHAR},
+            create_time = #{createTime,jdbcType=TIMESTAMP}
+        where id = #{id ,jdbcType=INTEGER}
+    </update>
+
+
+
+   <update id="updateSelective"  parameterType="java.util.HashMap">
+        update cl_user_base_info
+          <set>
+            <if test="userId != null and userId != '' ">        
+                user_id = #{userId,jdbcType=INTEGER},                
+            </if>
+            <if test="phone != null and phone != '' ">        
+                phone = #{phone,jdbcType=VARCHAR},                
+            </if>
+            <if test="realName != null and realName != '' ">        
+                real_name = #{realName,jdbcType=VARCHAR},                
+            </if>
+            <if test="age != null and age != '' ">        
+                age = #{age,jdbcType=INTEGER},                
+            </if>
+            <if test="sex != null and sex != '' ">        
+                sex = #{sex,jdbcType=VARCHAR},                
+            </if>
+            <if test="national != null and national != '' ">        
+                national = #{national,jdbcType=VARCHAR},                
+            </if>
+            <if test="idNo != null and idNo != '' ">        
+                id_no = #{idNo,jdbcType=VARCHAR},                
+            </if>
+            <if test="idAddr != null and idAddr != '' ">        
+                id_addr = #{idAddr,jdbcType=VARCHAR},                
+            </if>
+            <if test="livingImg != null and livingImg != '' ">        
+                living_img = #{livingImg,jdbcType=VARCHAR},                
+            </if>
+            <if test="ocrImg != null and ocrImg != '' ">        
+                ocr_img = #{ocrImg,jdbcType=VARCHAR},                
+            </if>
+            <if test="frontImg != null and frontImg != '' ">        
+                front_img = #{frontImg,jdbcType=VARCHAR},                
+            </if>
+            <if test="backImg != null and backImg != '' ">        
+                back_img = #{backImg,jdbcType=VARCHAR},                
+            </if>
+            <if test="education != null and education != '' ">        
+                education = #{education,jdbcType=VARCHAR},                
+            </if>
+            <if test="marryState != null and marryState != '' ">        
+                marry_state = #{marryState,jdbcType=VARCHAR},                
+            </if>
+            <if test="companyName != null and companyName != '' ">        
+                company_name = #{companyName,jdbcType=VARCHAR},                
+            </if>
+            <if test="companyPhone != null and companyPhone != '' ">        
+                company_phone = #{companyPhone,jdbcType=VARCHAR},                
+            </if>
+            <if test="companyAddr != null and companyAddr != '' ">        
+                company_addr = #{companyAddr,jdbcType=VARCHAR},                
+            </if>
+            <if test="companyDetailAddr != null and companyDetailAddr != '' ">        
+                company_detail_addr = #{companyDetailAddr,jdbcType=VARCHAR},                
+            </if>
+            <if test="companyCoordinate != null and companyCoordinate != '' ">        
+                company_coordinate = #{companyCoordinate,jdbcType=VARCHAR},                
+            </if>
+            <if test="salary != null and salary != '' ">        
+                salary = #{salary,jdbcType=VARCHAR},                
+            </if>
+            <if test="workingYears != null and workingYears != '' ">        
+                working_years = #{workingYears,jdbcType=VARCHAR},                
+            </if>
+            <if test="workingImg != null and workingImg != '' ">        
+                working_img = #{workingImg,jdbcType=VARCHAR},                
+            </if>
+            <if test="liveTime != null and liveTime != '' ">        
+                live_time = #{liveTime,jdbcType=VARCHAR},                
+            </if>
+            <if test="liveAddr != null and liveAddr != '' ">        
+                live_addr = #{liveAddr,jdbcType=VARCHAR},                
+            </if>
+            <if test="liveDetailAddr != null and liveDetailAddr != '' ">        
+                live_detail_addr = #{liveDetailAddr,jdbcType=VARCHAR},                
+            </if>
+            <if test="liveCoordinate != null and liveCoordinate != '' ">        
+                live_coordinate = #{liveCoordinate,jdbcType=VARCHAR},                
+            </if>
+            <if test="phoneServerPwd != null and phoneServerPwd != '' ">        
+                phone_server_pwd = #{phoneServerPwd,jdbcType=VARCHAR},                
+            </if>
+            <if test="registerAddr != null and registerAddr != '' ">        
+                register_addr = #{registerAddr,jdbcType=VARCHAR},                
+            </if>
+            <if test="registerCoordinate != null and registerCoordinate != '' ">        
+                register_coordinate = #{registerCoordinate,jdbcType=VARCHAR},                
+            </if>
+            <if test="state != null and state != '' ">        
+                state = #{state,jdbcType=VARCHAR},                
+            </if>
+            <if test="blackReason != null and blackReason != '' ">        
+                black_reason = #{blackReason,jdbcType=VARCHAR},                
+            </if>
+            <if test="updateTime != null">        
+                update_time = #{updateTime,jdbcType=TIMESTAMP},                
+            </if>
+            <if test="checkCode !=null">
+                and check_code = #{checkCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">        
+                create_time = #{createTime,jdbcType=TIMESTAMP} ,               
+            </if>
+            <if test="repayAssess != null">        
+                repay_assess = #{repayAssess,jdbcType=INTEGER},                
+            </if>
+            <if test="lastOverdueDay != null">        
+                last_overdue_day = #{lastOverdueDay,jdbcType=INTEGER},                
+            </if>
+            <if test="maxOverdueDay != null">
+                max_overdue_day = #{maxOverdueDay,jdbcType=INTEGER},
+            </if>
+            <!-- add by zhouyao 2017/11/07 添加最后一次修改人用户id...-->
+             <if test="updateUserId != null">        
+                 update_user_id = #{updateUserId,jdbcType=INTEGER}           
+            </if>
+            
+            
+        </set>    
+        where id = #{id ,jdbcType=INTEGER}
+    </update>
+
+
+
+    <select id="findByPrimary" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List" />
+        from cl_user_base_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+	<select id="findSelective" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from cl_user_base_info
+        <include refid="searchBy"/>
+        order by id desc limit 1
+    </select>
+               
+    <select id="listSelective" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from cl_user_base_info
+        <include refid="searchBy"/>
+    </select>
+            
+     <select id="getDictsCache" parameterType="java.lang.String" resultType="java.util.HashMap">
+		SELECT
+			b.item_code as "code",
+			b.item_value as "value"
+		FROM
+			arc_sys_dict a,
+			arc_sys_dict_detail b
+		WHERE
+			a.id = b.parent_id
+			AND a.type_code = #{type}
+	</select>
+    
+    <select id="findUserImags" resultType="com.kuanggui.EncryptDataSource.domain.UserBaseInfo"  parameterType="java.lang.Long" >
+    	select id,user_id userId,living_img livingImg,front_img frontImg,back_img backImg,ocr_img ocrImg,real_name realName,id_no idNo,phone
+        from  cl_user_base_info where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+	
+	<select id="findByUserId" resultType="com.kuanggui.EncryptDataSource.domain.UserBaseInfo" parameterType="java.lang.Long" >
+		 select
+        <include refid="Base_Column_List" />
+        from cl_user_base_info
+        where user_id = #{userId,jdbcType=INTEGER}
+	</select>
+	<select id="findByUseridNo" resultType="com.kuanggui.EncryptDataSource.domain.UserBaseInfo" parameterType="java.lang.String" >
+		 select
+        <include refid="Base_Column_List" />
+        from cl_user_base_info
+        where id_no = #{idNo}
+	</select>
+
+</mapper>

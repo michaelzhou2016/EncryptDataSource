@@ -1,0 +1,29 @@
+dataSource: !!com.zaxxer.hikari.HikariDataSource
+  driverClassName: com.mysql.cj.jdbc.Driver
+  jdbcUrl: jdbc:mysql://47.101.33.86:3306/encrypt?serverTimezone=UTC&useSSL=false&rewriteBatchedStatements=true&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+  username: root
+  password:
+
+encryptRule:
+  encryptors:
+    phone_encryptror:
+      type: aes
+      props:
+        aes.key.value: 123456
+    id_no_encryptror:
+      type: aes
+      props:
+        aes.key.value: 123456
+  tables:
+    cl_user_base_info_encrypt:
+      columns:
+        phone:
+          cipherColumn: phone_encrypt
+          encryptor: phone_encryptror
+        id_no:
+          cipherColumn: id_no_encrypt
+          encryptor: id_no_encryptror
+
+props:
+  query.with.cipher.column: true
+#  sql.show: true

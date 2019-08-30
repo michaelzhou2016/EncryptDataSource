@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    primary:
+      jdbc-url: jdbc:mysql://47.101.33.86:3306/lingyongqian?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+      username: root
+      password:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+#  shardingsphere:
+#    datasource:
+#      names: encrypt
+#
+#      encrypt:
+#        type: com.zaxxer.hikari.HikariDataSource
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        jdbc-url: jdbc:mysql://47.101.33.86:3306/encrypt?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+#        username: root
+#        password: 1qazxsw2
+#        max-total: 100
+#
+#    encrypt:
+#      encryptors:
+#        encryptor_aes:
+#          type: aes
+#          props:
+#            aes:
+#              key:
+#                value: 123456
+#      tables:
+#        cl_user_base_info:
+#          columns:
+#            phone:
+#              cipherColumn: phone_encrypt
+#              encryptor: encryptor_aes
+#            id_no:
+#              cipherColumn: id_no_encrypt
+#              encryptor: encryptor_aes
+#    props:
+#      sql:
+#        show: true
+#      query:
+#        with:
+#          cipher:
+#            comlum: true
+server:
+  port: 8081
